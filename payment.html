@@ -1,22 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Protected Page</title>
+  <meta charset="UTF-8">
+  <title>Entry Closed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Background Glow Animation */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,255,255,0.2), transparent);
+      animation: glow 6s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { transform: scale(1); }
+      to { transform: scale(1.3); }
+    }
+
+    .container {
+      position: relative;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      color: white;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 40px rgba(0,255,255,0.2);
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #00eaff;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(45deg, #00eaff, #00c3ff);
+      color: black;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #00eaff;
+    }
+
+  </style>
 </head>
+
 <body>
 
-<script>
-(function() {
-    const encoded = "PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPgo8dGl0bGU+UGF5bWVudCAtIFN0dWR5bWF0ZTwvdGl0bGU+Cgo8c3R5bGU+Cjpyb290IHsKICAtLWJnOiAjMDUwODE2OwogIC0tdGV4dDogI2ZmZmZmZjsKICAtLW11dGVkOiByZ2JhKDI1NSwyNTUsMjU1LDAuNyk7CiAgLS1nbGFzczogcmdiYSgyNTUsMjU1LDI1NSwwLjA2KTsKICAtLWJvcmRlcjogcmdiYSgyNTUsMjU1LDI1NSwwLjEyKTsKICAtLWdyYWRpZW50OiBsaW5lYXItZ3JhZGllbnQoMTM1ZGVnLCAjNjdlOGY5LCAjYTc4YmZhLCAjZjQ3MmI2KTsKfQoKYm9keSB7CiAgbWFyZ2luOiAwOwogIGZvbnQtZmFtaWx5OiBJbnRlciwgc2Fucy1zZXJpZjsKICBiYWNrZ3JvdW5kOiByYWRpYWwtZ3JhZGllbnQoY2lyY2xlIGF0IDIwJSAyMCUsIHJnYmEoMTAzLDIzMiwyNDksMC4yKSwgdHJhbnNwYXJlbnQgMzAlKSwKICAgICAgICAgICAgICByYWRpYWwtZ3JhZGllbnQoY2lyY2xlIGF0IDgwJSAzMCUsIHJnYmEoMTY3LDEzOSwyNTAsMC4yKSwgdHJhbnNwYXJlbnQgMzAlKSwKICAgICAgICAgICAgICByYWRpYWwtZ3JhZGllbnQoY2lyY2xlIGF0IDUwJSA5MCUsIHJnYmEoMjQ0LDExNCwxODIsMC4xNSksIHRyYW5zcGFyZW50IDQwJSksCiAgICAgICAgICAgICAgIzA1MDgxNjsKICBjb2xvcjogdmFyKC0tdGV4dCk7CiAgZGlzcGxheTogZmxleDsKICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjsKICBhbGlnbi1pdGVtczogY2VudGVyOwogIGhlaWdodDogMTAwdmg7CiAgb3ZlcmZsb3c6IGhpZGRlbjsKfQoKLyogZ2xvdyAqLwouZ2xvdyB7CiAgcG9zaXRpb246IGFic29sdXRlOwogIHdpZHRoOiAzMDBweDsKICBoZWlnaHQ6IDMwMHB4OwogIGJvcmRlci1yYWRpdXM6IDUwJTsKICBmaWx0ZXI6IGJsdXIoODBweCk7CiAgb3BhY2l0eTogMC4yNTsKICBhbmltYXRpb246IGZsb2F0IDEwcyBlYXNlLWluLW91dCBpbmZpbml0ZTsKfQoKLmdsb3cub25lIHsgYmFja2dyb3VuZDogIzY3ZThmOTsgdG9wOiAtODBweDsgbGVmdDogLTgwcHg7IH0KLmdsb3cudHdvIHsgYmFja2dyb3VuZDogI2E3OGJmYTsgYm90dG9tOiAtMTAwcHg7IHJpZ2h0OiAtNjBweDsgYW5pbWF0aW9uLWRlbGF5OiAtNHM7IH0KLmdsb3cudGhyZWUgeyBiYWNrZ3JvdW5kOiAjZjQ3MmI2OyB0b3A6IDUwJTsgbGVmdDogNDAlOyBhbmltYXRpb24tZGVsYXk6IC0yczsgfQoKQGtleWZyYW1lcyBmbG9hdCB7CiAgMCUsMTAwJSB7IHRyYW5zZm9ybTogdHJhbnNsYXRlWSgwKTsgfQogIDUwJSB7IHRyYW5zZm9ybTogdHJhbnNsYXRlWSgyMHB4KTsgfQp9CgovKiBjYXJkICovCi5jb250YWluZXIgewogIHBvc2l0aW9uOiByZWxhdGl2ZTsKICBiYWNrZ3JvdW5kOiB2YXIoLS1nbGFzcyk7CiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDIwcHgpOwogIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWJvcmRlcik7CiAgcGFkZGluZzogMzBweDsKICBib3JkZXItcmFkaXVzOiAyNHB4OwogIHdpZHRoOiAzNDBweDsKICB0ZXh0LWFsaWduOiBjZW50ZXI7CiAgYm94LXNoYWRvdzogMCAyMHB4IDYwcHggcmdiYSgwLDAsMCwwLjYpOwogIHotaW5kZXg6IDE7Cn0KCmgxIHsgZm9udC1zaXplOiAyNHB4OyBtYXJnaW4tYm90dG9tOiAxMHB4OyB9CgoucGxhbiB7IGNvbG9yOiB2YXIoLS1tdXRlZCk7IH0KCi5wcmljZSB7CiAgZm9udC1zaXplOiAzNHB4OwogIGZvbnQtd2VpZ2h0OiA4MDA7CiAgbWFyZ2luOiAxMHB4IDAgMjBweDsKICBiYWNrZ3JvdW5kOiB2YXIoLS1ncmFkaWVudCk7CiAgLXdlYmtpdC1iYWNrZ3JvdW5kLWNsaXA6IHRleHQ7CiAgY29sb3I6IHRyYW5zcGFyZW50Owp9CgoucXIgewogIHdpZHRoOiAyMDBweDsKICBib3JkZXItcmFkaXVzOiAxNHB4OwogIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWJvcmRlcik7CiAgbWFyZ2luOiAxNXB4IGF1dG87Cn0KCi8qIGJ1dHRvbiAqLwouYnRuIHsKICBkaXNwbGF5OiBibG9jazsKICBtYXJnaW4tdG9wOiAxMnB4OwogIHBhZGRpbmc6IDE0cHg7CiAgYm9yZGVyLXJhZGl1czogMTRweDsKICBiYWNrZ3JvdW5kOiB2YXIoLS1ncmFkaWVudCk7CiAgY29sb3I6IGJsYWNrOwogIGZvbnQtd2VpZ2h0OiBib2xkOwogIHRleHQtZGVjb3JhdGlvbjogbm9uZTsKfQoKLmJ0bi5zZWNvbmRhcnkgewogIGJhY2tncm91bmQ6IHJnYmEoMjU1LDI1NSwyNTUsMC4wOCk7CiAgY29sb3I6IHdoaXRlOwogIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWJvcmRlcik7Cn0KCi5ub3RlIHsKICBtYXJnaW4tdG9wOiAxMnB4OwogIGZvbnQtc2l6ZTogMTJweDsKICBjb2xvcjogdmFyKC0tbXV0ZWQpOwp9Cjwvc3R5bGU+CjwvaGVhZD4KCjxib2R5PgoKPGRpdiBjbGFzcz0iZ2xvdyBvbmUiPjwvZGl2Pgo8ZGl2IGNsYXNzPSJnbG93IHR3byI+PC9kaXY+CjxkaXYgY2xhc3M9Imdsb3cgdGhyZWUiPjwvZGl2PgoKPGRpdiBjbGFzcz0iY29udGFpbmVyIj4KICA8aDE+Q29tcGxldGUgUGF5bWVudDwvaDE+CgogIDxkaXYgY2xhc3M9InBsYW4iIGlkPSJwbGFuTmFtZSI+UGxhbjwvZGl2PgogIDxkaXYgY2xhc3M9InByaWNlIiBpZD0icGxhblByaWNlIj7igrkwPC9kaXY+CgogIDwhLS0gUVIgLS0+CiAgPGltZyBpZD0icXJJbWFnZSIgY2xhc3M9InFyIiBzcmM9IiIgYWx0PSJRUiBDb2RlIj4KCiAgPCEtLSBQYXkgQnV0dG9uIC0tPgogIDxhIGlkPSJwYXlCdG4iIGNsYXNzPSJidG4iIGhyZWY9IiMiPlBheSBOb3c8L2E+CgogIDwhLS0gVGVsZWdyYW0gU3VwcG9ydCAtLT4KICA8YSBocmVmPSJodHRwczovL3QubWUvZ29kX3N1bm55X2ppIiBjbGFzcz0iYnRuIHNlY29uZGFyeSIgdGFyZ2V0PSJfYmxhbmsiPgogICAgQ29udGFjdCBTdXBwb3J0CiAgPC9hPgoKICA8ZGl2IGNsYXNzPSJub3RlIj4KICAgIFBheW1lbnQga2FybmUga2UgYmFhZCBzY3JlZW5zaG90IFRlbGVncmFtIHBhciBiaGVqZWluLgogIDwvZGl2Pgo8L2Rpdj4KCjxzY3JpcHQ+CmNvbnN0IHBsYW4gPSBuZXcgVVJMU2VhcmNoUGFyYW1zKHdpbmRvdy5sb2NhdGlvbi5zZWFyY2gpLmdldCgncGxhbicpOwoKY29uc3QgcGxhbk5hbWUgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncGxhbk5hbWUnKTsKY29uc3QgcGxhblByaWNlID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3BsYW5QcmljZScpOwpjb25zdCBxckltYWdlID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3FySW1hZ2UnKTsKY29uc3QgcGF5QnRuID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3BheUJ0bicpOwoKLy8gVVBJIGJhc2UKY29uc3QgdXBpQmFzZSA9ICJ1cGk6Ly9wYXk/cGE9Z3lhbmJpbmR1cGFpZEBwb3N0YmFuayZwbj1SQUpNQU5HQUwgR1VQVEEmY3U9SU5SIjsKCmlmIChwbGFuID09PSAicHJvIikgewogIHBsYW5OYW1lLmlubmVyVGV4dCA9ICJQcm8gUGxhbiI7CiAgcGxhblByaWNlLmlubmVyVGV4dCA9ICLigrk0OTkiOwoKICBxckltYWdlLnNyYyA9ICJodHRwczovL2kuaWJiLmNvL2JnVDFNa01ZL3FyNDk5LnBuZyI7IC8vIPCfkYggYXBuYSBjb3JyZWN0IGxpbmsgZGFhbG5hCiAgcGF5QnRuLmhyZWYgPSB1cGlCYXNlICsgIiZhbT00OTkiOwp9CgplbHNlIGlmIChwbGFuID09PSAibGVnZW5kIikgewogIHBsYW5OYW1lLmlubmVyVGV4dCA9ICJMZWdlbmQgUGxhbiI7CiAgcGxhblByaWNlLmlubmVyVGV4dCA9ICLigrkxOTk5IjsKCiAgcXJJbWFnZS5zcmMgPSAiaHR0cHM6Ly9pYmIuY28velZ2U3FIMkMiOyAvLyDwn5GIIHlhaGEgMTk5OSB3YWxhIGRhYWxuYQogIHBheUJ0bi5ocmVmID0gdXBpQmFzZSArICImYW09MTk5OSI7Cn0KCmVsc2UgewogIHBsYW5OYW1lLmlubmVyVGV4dCA9ICJVbmtub3duIFBsYW4iOwogIHBsYW5QcmljZS5pbm5lclRleHQgPSAi4oK5MCI7Cn0KPC9zY3JpcHQ+Cgo8L2JvZHk+CjwvaHRtbD4=";
-    const decoded = new TextDecoder("utf-8").decode(
-        Uint8Array.from(atob(encoded), c => c.charCodeAt(0))
-    );
-    document.open();
-    document.write(decoded);
-    document.close();
-})();
-</script>
+  <div class="container">
+    <div class="icon">🚫</div>
+    <h1>Entry Closed</h1>
+    <p>Sorry, entries are no longer accepted.<br>Please check back later.</p>
+
+    <button onclick="location.reload()">Try Again</button>
+  </div>
 
 </body>
 </html>
