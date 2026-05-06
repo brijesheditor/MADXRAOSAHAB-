@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudyMate Mods Collection</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      color:white;
+      padding:20px;
+    }
+
+    .container{
+      max-width:900px;
+      margin:auto;
+    }
+
+    .title{
+      text-align:center;
+      font-size:32px;
+      font-weight:bold;
+      margin-bottom:25px;
+      color:#38bdf8;
+    }
+
+    .card{
+      background:#1e293b;
+      border-radius:18px;
+      padding:20px;
+      margin-bottom:20px;
+      box-shadow:0 0 15px rgba(0,0,0,0.3);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    h2{
+      color:#38bdf8;
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .link-box{
+      background:#0f172a;
+      padding:14px;
+      border-radius:12px;
+      margin-top:12px;
+      border:1px solid #334155;
+    }
+
+    .link-box p{
+      margin-bottom:8px;
+      color:#cbd5e1;
+      font-weight:bold;
+    }
+
+    .link-box a{
+      color:#22d3ee;
+      text-decoration:none;
+      word-break:break-all;
+    }
+
+    .link-box a:hover{
+      text-decoration:underline;
+    }
+
+    .footer{
+      text-align:center;
+      margin-top:30px;
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:10px;
+      padding:10px 18px;
+      background:#0ea5e9;
+      color:white !important;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#0284c7;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="title">
+      📚 StudyMate Mods & Web Links Collection
+    </div>
+
+    <!-- KGS MOD APK -->
+    <div class="card">
+      <h2>🔹 KGS Mod APK</h2>
+
+      <div class="link-box">
+        <p>📥 Download Link</p>
+        <a href="https://t.me/sunny_jee_ke_duniya_2/784" target="_blank">
+          https://t.me/sunny_jee_ke_duniya_2/784
+        </a>
+
+        <br>
+        <a class="btn" href="https://t.me/sunny_jee_ke_duniya_2/784" target="_blank">
+          Download Now
+        </a>
+      </div>
+    </div>
+
+    <!-- KGS WEB LINKS -->
+    <div class="card">
+      <h2>🌐 KGS + KGS Test Mod</h2>
+
+      <div class="link-box">
+        <p>🔗 Primary Link</p>
+        <a href="https://sunnyji01.github.io/Studymate/home.html" target="_blank">
+          sunnyji01.github.io/Studymate/home.html
+        </a>
+      </div>
+
+      <div class="link-box">
+        <p>🔗 Alternate Link</p>
+        <a href="https://study-mate.in" target="_blank">
+          study-mate.in
+        </a>
+      </div>
+
+      <div class="link-box">
+        <p>🔗 Backup Link</p>
+        <a href="https://kgs-web.vercel.app" target="_blank">
+          kgs-web.vercel.app
+        </a>
+      </div>
+    </div>
+
+    <!-- OTHER PLATFORMS -->
+    <div class="card">
+      <h2>🚀 Other StudyMate Platforms</h2>
+
+      <div class="link-box">
+        <p>📘 RWA Mod Web</p>
+        <a href="https://rwa-studymate.vercel.app/" target="_blank">
+          rwa-studymate.vercel.app
+        </a>
+      </div>
+
+      <div class="link-box">
+        <p>📗 TestBook Mod</p>
+        <a href="https://testbook-studymate.vercel.app" target="_blank">
+          testbook-studymate.vercel.app
+        </a>
+      </div>
+
+      <div class="link-box">
+        <p>📙 Unacademy Mod</p>
+        <a href="https://unacademy-studymate.vercel.app" target="_blank">
+          unacademy-studymate.vercel.app
+        </a>
+      </div>
+
+      <div class="link-box">
+        <p>📕 Test Ranking</p>
+        <a href="https://test-ranking-studymate.vercel.app" target="_blank">
+          test-ranking-studymate.vercel.app
+        </a>
+      </div>
+
+      <div class="link-box">
+        <p>📔 Study IQ Mod</p>
+        <a href="https://study-iq-studymate.vercel.app" target="_blank">
+          study-iq-studymate.vercel.app
+        </a>
+      </div>
+
+      <div class="link-box">
+        <p>📓 Gyan Bindu Mod</p>
+        <a href="https://study-mate.in/gyan" target="_blank">
+          study-mate.in/gyan
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      Made with ❤️ by StudyMate
+    </div>
+
+  </div>
+
+</body>
+</html>
