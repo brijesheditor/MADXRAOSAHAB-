@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Service Temporarily Unavailable</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+overflow:hidden;
+background:#050816;
+color:#fff;
+position:relative;
+}
+
+/* Animated Gradient Background */
+
+body::before{
+content:"";
+position:fixed;
+inset:-30%;
+background:
+radial-gradient(circle,#3b82f640 0%,transparent 25%),
+radial-gradient(circle,#7c3aed35 0%,transparent 25%),
+radial-gradient(circle,#06b6d430 0%,transparent 30%);
+background-size:35% 35%;
+animation:bgFloat 18s ease-in-out infinite alternate;
+filter:blur(45px);
+}
+
+@keyframes bgFloat{
+0%{
+transform:translate(-5%,-5%) rotate(0deg);
+}
+100%{
+transform:translate(5%,5%) rotate(25deg);
+}
+}
+
+/* Animated Stars */
+
+.stars{
+position:fixed;
+inset:0;
+background-image:
+radial-gradient(2px 2px at 15% 20%,#fff,transparent),
+radial-gradient(2px 2px at 80% 15%,#fff,transparent),
+radial-gradient(2px 2px at 70% 60%,#fff,transparent),
+radial-gradient(1px 1px at 30% 70%,#fff,transparent),
+radial-gradient(2px 2px at 50% 45%,#fff,transparent),
+radial-gradient(1px 1px at 90% 90%,#fff,transparent);
+background-size:400px 400px;
+opacity:.45;
+animation:starMove 40s linear infinite;
+}
+
+@keyframes starMove{
+from{
+transform:translateY(0);
+}
+to{
+transform:translateY(-400px);
+}
+}
+
+/* Aurora */
+
+.aurora{
+position:fixed;
+inset:0;
+background:
+linear-gradient(120deg,
+transparent 20%,
+rgba(59,130,246,.12),
+transparent 40%,
+rgba(168,85,247,.12),
+transparent 70%);
+background-size:300% 300%;
+animation:aurora 15s linear infinite;
+mix-blend-mode:screen;
+}
+
+@keyframes aurora{
+0%{background-position:0% 50%;}
+100%{background-position:100% 50%;}
+}
+
+/* Grid */
+
+.grid{
+position:fixed;
+inset:0;
+background:
+linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+background-size:40px 40px;
+opacity:.18;
+mask-image:linear-gradient(to bottom,transparent,#fff);
+animation:gridMove 12s linear infinite;
+}
+
+@keyframes gridMove{
+to{
+transform:translateY(40px);
+}
+}
+
+/* Card */
+
+.card{
+position:relative;
+z-index:10;
+width:92%;
+max-width:470px;
+padding:42px 30px;
+border-radius:28px;
+background:rgba(255,255,255,.07);
+border:1px solid rgba(255,255,255,.12);
+backdrop-filter:blur(18px);
+box-shadow:
+0 0 40px rgba(0,0,0,.45),
+0 0 80px rgba(59,130,246,.08);
+text-align:center;
+animation:popup .8s ease;
+}
+
+@keyframes popup{
+from{
+opacity:0;
+transform:translateY(40px) scale(.9);
+}
+to{
+opacity:1;
+transform:none;
+}
+}
+
+/* Status Orb */
+
+.status{
+position:relative;
+width:120px;
+height:120px;
+margin:auto;
+margin-bottom:28px;
+}
+
+.ring{
+position:absolute;
+inset:0;
+border-radius:50%;
+border:3px solid rgba(255,255,255,.08);
+border-top-color:#3b82f6;
+border-right-color:#8b5cf6;
+animation:spin 6s linear infinite;
+}
+
+.ring2{
+position:absolute;
+inset:12px;
+border-radius:50%;
+border:2px dashed rgba(255,255,255,.12);
+animation:spinReverse 10s linear infinite;
+}
+
+.core{
+position:absolute;
+inset:25px;
+border-radius:50%;
+background:linear-gradient(135deg,#3b82f6,#8b5cf6,#06b6d4);
+box-shadow:
+0 0 25px #3b82f6,
+0 0 60px #8b5cf6;
+animation:pulse 2s infinite;
+}
+
+.core::after{
+content:"";
+position:absolute;
+width:18px;
+height:18px;
+background:#fff;
+border-radius:50%;
+top:18%;
+left:24%;
+filter:blur(3px);
+opacity:.8;
+}
+
+@keyframes spin{
+to{
+transform:rotate(360deg);
+}
+}
+
+@keyframes spinReverse{
+to{
+transform:rotate(-360deg);
+}
+}
+
+@keyframes pulse{
+50%{
+transform:scale(1.12);
+box-shadow:
+0 0 45px #3b82f6,
+0 0 90px #8b5cf6;
+}
+}
+
+/* Badge */
+
+.badge{
+display:inline-block;
+padding:8px 18px;
+border-radius:40px;
+background:rgba(239,68,68,.12);
+border:1px solid rgba(239,68,68,.35);
+color:#ffbcbc;
+font-size:13px;
+letter-spacing:1.2px;
+margin-bottom:20px;
+}
+
+/* Text */
+
+h1{
+font-size:30px;
+font-weight:700;
+margin-bottom:18px;
+}
+
+p{
+color:#d7dce8;
+font-size:15px;
+line-height:1.9;
+margin-bottom:30px;
+}
+
+/* Buttons */
+
+.btn{
+display:block;
+padding:16px;
+border-radius:16px;
+text-decoration:none;
+font-weight:600;
+transition:.35s;
+margin-top:15px;
+}
+
+.web{
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+color:#fff;
+}
+
+.web:hover{
+transform:translateY(-4px);
+box-shadow:0 15px 35px rgba(59,130,246,.45);
+}
+
+.telegram{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
+color:#fff;
+}
+
+.telegram:hover{
+background:#229ED9;
+transform:translateY(-4px);
+}
+
+.footer{
+margin-top:22px;
+font-size:13px;
+color:#9ca3af;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="aurora"></div>
+<div class="grid"></div>
+
+<div class="card">
+
+<div class="status">
+<div class="ring"></div>
+<div class="ring2"></div>
+<div class="core"></div>
+</div>
+
+<div class="badge">
+TEMPORARILY UNAVAILABLE
+</div>
+
+<h1>We'll Be Back Soon</h1>
+
+<p>
+We're currently enhancing this feature to deliver a faster, smoother, and more reliable experience for everyone.
+<br><br>
+This service is temporarily unavailable while improvements are being made behind the scenes.
+Thank you for your patience and continued support. 💜
+</p>
+
+<a href="https://study-mate.in" class="btn web">
+🌐 Continue to Website
+</a>
+
+<a href="https://t.me/sunny_jee_ke_duniya_2" class="btn telegram">
+📢 Join Our Telegram for Live Updates
+</a>
+
+<div class="footer">
+Crafted with ❤️ • We'll be back shortly
+</div>
+
+</div>
+
+</body>
+</html>
