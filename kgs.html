@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Exclusive Web Access</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e1b4b, #311042);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .step-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .locked {
+            opacity: 0.4;
+            pointer-events: none;
+            filter: grayscale(80%);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.8); }
+        }
+        .active-glow {
+            animation: pulseGlow 2s infinite;
+            border-color: rgba(168, 85, 247, 0.8);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+    <div class="w-full max-w-xl glass-card rounded-3xl p-6 sm:p-8 shadow-2xl text-white relative overflow-hidden">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-8">
+            <div class="inline-block p-3 rounded-full bg-purple-600/30 text-purple-400 mb-3 animate-bounce">
+                <i class="fa-solid fa-lock-open text-2xl"></i>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-bold tracking-wide">Unlock Web Access</h1>
+            <p class="text-gray-400 text-sm mt-1">Pehle channel par click karke subscribe karein, tabhi agla option khulega.</p>
+        </div>
+
+        <!-- Channels Container -->
+        <div id="steps-container" class="space-y-4">
+            <!-- Dynamic channels injected here -->
+        </div>
+
+        <!-- Success Completion Screen (Hidden by Default) -->
+        <div id="success-screen" class="hidden text-center py-10 animate-fade-in">
+            <div class="w-20 h-20 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl shadow-lg border border-green-500/40 animate-bounce">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h2 class="text-3xl font-extrabold text-white mb-2">Congratulations! 🎉</h2>
+            <p class="text-gray-300 text-sm mb-6">Aapne sabhi steps successfully complete kar liye hain. Aapka access activate ho chuka hai.</p>
+            <a href="https://study-mate.in" target="_blank" 
+               class="inline-block w-full py-4 px-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-xl shadow-lg transform hover:-translate-y-0.5 transition duration-200 text-center">
+                Click Here to Access Web (Your Access is Activated) <i class="fa-solid fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        // 5 YouTube Channels Data (with clicked status tracking)
+        const channels = [
+            { id: 1, name: "Channel 1 (@master72322)", url: "https://youtube.com/@master72322", clicked: false },
+            { id: 2, name: "Channel 2 (@rohit-i4f3l)", url: "https://youtube.com/@rohit-i4f3l", clicked: false },
+            { id: 3, name: "Channel 3 (@rohit-j3v1x)", url: "https://youtube.com/@rohit-j3v1x", clicked: false },
+            { id: 4, name: "Channel 4 (@rohit-c3l)", url: "https://youtube.com/@rohit-c3l", clicked: false },
+            { id: 5, name: "Channel 5 (@rohit-e2q8f)", url: "https://youtube.com/@rohit-e2q8f", clicked: false }
+        ];
+
+        let currentStep = 0;
+        const container = document.getElementById('steps-container');
+        const successScreen = document.getElementById('success-screen');
+
+        function renderSteps() {
+            container.innerHTML = '';
+            channels.forEach((channel, index) => {
+                let isLocked = index > currentStep;
+                let isCompleted = index < currentStep;
+                let isActive = index === currentStep;
+
+                let cardClass = "step-card glass-card rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 border border-white/10";
+                
+                if (isLocked) {
+                    cardClass += " locked";
+                } else if (isActive) {
+                    cardClass += " active-glow bg-purple-900/20";
+                } else if (isCompleted) {
+                    cardClass += " bg-green-900/15 border-green-500/30";
+                }
+
+                let statusHtml = '';
+                if (isCompleted) {
+                    statusHtml = `<span class="flex items-center text-green-400 font-semibold text-sm"><i class="fa-solid fa-circle-check mr-1.5"></i> Subscribed</span>`;
+                } else if (isLocked) {
+                    statusHtml = `<span class="flex items-center text-gray-400 text-sm"><i class="fa-solid fa-lock mr-1.5"></i> Locked</span>`;
+                } else {
+                    if (!channel.clicked) {
+                        statusHtml = `<span class="flex items-center text-yellow-400 text-sm font-medium"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Pehle Subscribe par click karein</span>`;
+                    } else {
+                        statusHtml = `<span class="flex items-center text-purple-400 text-sm font-medium"><i class="fa-solid fa-circle-check mr-1.5 text-green-400"></i> Link khul gaya, ab verify karein</span>`;
+                    }
+                }
+
+                let html = `
+                    <div class="${cardClass}">
+                        <div class="flex items-center space-x-3 w-full sm:w-auto">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${isCompleted ? 'bg-green-500/20 text-green-400' : 'bg-purple-600/30 text-purple-300'}">
+                                ${isCompleted ? '<i class="fa-solid fa-check"></i>' : index + 1}
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-sm sm:text-base text-gray-100">${channel.name}</h3>
+                                ${statusHtml}
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                            ${!isCompleted ? `
+                                <a href="${channel.url}" target="_blank" onclick="handleSubscribeClick(${index})" 
+                                   class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-xs sm:text-sm font-medium rounded-xl transition flex items-center gap-1.5 shadow-md">
+                                    <i class="fa-brands fa-youtube"></i> Subscribe
+                                </a>
+                                
+                                <button onclick="verifyStep(${index})" 
+                                   class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-xs sm:text-sm font-medium rounded-xl transition flex items-center gap-1.5 shadow-md ${!channel.clicked ? 'opacity-40 cursor-not-allowed pointer-events-none' : 'animate-pulse'}">
+                                    I Subscribed
+                                </button>
+                            ` : `
+                                <span class="text-green-400 text-xs sm:text-sm font-medium px-3 py-1 bg-green-500/10 rounded-lg">Completed</span>
+                            `}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        // Jab user 'Subscribe' button dabayega
+        function handleSubscribeClick(index) {
+            channels[index].clicked = true;
+            // Thoda delay dekar UI update karenge taaki button enable ho jaye
+            setTimeout(() => {
+                renderSteps();
+            }, 500);
+        }
+
+        // Jab user 'I Subscribed' dabayega (tabhi chalega jab subscribe click ho chuka ho)
+        function verifyStep(index) {
+            if (index === currentStep && channels[index].clicked) {
+                currentStep++;
+                if (currentStep >= channels.length) {
+                    container.style.display = 'none';
+                    successScreen.classList.remove('hidden');
+                } else {
+                    renderSteps();
+                }
+            }
+        }
+
+        // Initialize UI
+        renderSteps();
+    </script>
+</body>
+</html>
